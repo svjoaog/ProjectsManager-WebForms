@@ -30,6 +30,9 @@ namespace Fundep.Gestao.Projeto.Web.Pages.Projects
 
                 lblStatus.Text = "Projeto criado com sucesso!";
                 lblStatus.ForeColor = System.Drawing.Color.Green;
+
+                ProjectServiceXml service = new ProjectServiceXml();
+                service.save(project);
             }
             catch (Exception ex)
             {
