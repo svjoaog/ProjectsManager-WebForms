@@ -1,4 +1,5 @@
-﻿using ProjectsWcfServiceLibrary.Contracts;
+﻿using Microsoft.Ajax.Utilities;
+using ProjectsWcfServiceLibrary.Contracts;
 using ProjectsWcfServiceLibrary.Services;
 using System;
 using System.Linq;
@@ -19,10 +20,24 @@ namespace Fundep.Gestao.Projeto.Web.Pages.Projects
 
         private void LoadProjects()
         {
-            
             IProjectService service = new ProjectServices(xmlPath);
-            gvProjects.DataSource = service.ListProjects();
-            gvProjects.DataBind();
+            var projects = service.ListProjects();
+            if(!projects.Any())
+            {
+                gvProjects.Visible = false;
+                lblIsEmpty.Text = "Não há projetos cadastrados!";
+                lblIsEmpty.Visible = true;
+
+            }
+            else
+            {
+                lblIsEmpty.Visible = false;
+                gvProjects.Visible = true;
+                gvProjects.DataSource = service.ListProjects();
+                gvProjects.DataBind();
+                
+            }
+                
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -38,8 +53,19 @@ namespace Fundep.Gestao.Projeto.Web.Pages.Projects
                 p.ProjectNum.ToString().Contains(search)).ToList();
             }
 
-            gvProjects.DataSource = projects;
-            gvProjects.DataBind();
+            if(!projects.Any())
+            {
+                gvProjects.Visible = false;
+                lblIsEmpty.Text = "Não foi encontrado projetos com esse número!";
+                lblIsEmpty.Visible = true;
+            }
+            else
+            {
+                lblIsEmpty.Visible = false;
+                gvProjects.Visible = true;
+                gvProjects.DataSource = projects;
+                gvProjects.DataBind();
+            }
         }
 
         protected void btnClearFilter_Click(object sender, EventArgs e)

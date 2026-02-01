@@ -13,7 +13,6 @@ namespace Fundep.Gestao.Projeto.Web.Pages.Projects
         {
             try
             {
-                
                 IProjectService service = new ProjectServices(xmlPath);
                 var project = new Project
                 {

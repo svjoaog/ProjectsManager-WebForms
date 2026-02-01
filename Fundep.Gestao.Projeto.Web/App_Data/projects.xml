@@ -1,27 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Projects>
   <Project>
-    <ProjectNumber>12</ProjectNumber>
-    <SubProjectNumber>1.2.3.</SubProjectNumber>
-    <Name>Web App</Name>
-    <Manager>João Vitor</Manager>
-    <Balance>1200</Balance>
-  </Project>
-  <Project>
-    <ProjectNumber>1</ProjectNumber>
-    <SubProjectNumber>1.2.4.</SubProjectNumber>
-    <Name>Web App</Name>
-    <Manager>João Vitor</Manager>
-    <Balance>122222</Balance>
-  </Project>
-  <Project>
-    <ProjectNumber>2</ProjectNumber>
-    <SubProjectNumber>1.2.4.</SubProjectNumber>
-    <Name>Web CLL</Name>
-    <Manager>João Vitor</Manager>
-    <Balance>12</Balance>
-  </Project>
-  <Project>
     <ProjectNumber>134</ProjectNumber>
     <SubProjectNumber>1llds</SubProjectNumber>
     <Name>Projetssss</Name>

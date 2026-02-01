@@ -19,6 +19,7 @@
 </head>
 <body>
     <form runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <header>
             <h2>FUNDEP - Sistema de Gestão de Projetos</h2>
         </header>
