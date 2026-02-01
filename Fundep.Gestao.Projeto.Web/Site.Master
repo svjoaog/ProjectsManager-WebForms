@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestão de Projetos - FUNDEP</title>
 
-    <asp:PlaceHolder runat="server">
+    <asp:PlaceHolder runat="server" ID="Main">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
@@ -19,7 +19,35 @@
 </head>
 <body>
     <form runat="server">
+        <header>
+            <h2>FUNDEP - Sistema de Gestão de Projetos</h2>
+        </header>
 
+        <nav style="padding: 10px; background-color: #f0f0f0;">
+            <asp:HyperLink runat="server"
+                NavigateUrl="~/Default.aspx"
+                Text="Home" />
+
+            &nbsp;|&nbsp;
+
+            <asp:HyperLink runat="server"
+                NavigateUrl="~/Pages/Projects/CreateProject.aspx"
+                Text="Criar Projeto" />
+
+            &nbsp;|&nbsp;
+
+            <asp:HyperLink runat="server"
+                NavigateUrl="~/Pages/Projects/ListProjects.aspx"
+                Text="Listar Projetos" />
+        </nav>
+        <main>
+            <asp:ContentPlaceHolder runat="server" ID="MainContent">
+
+            </asp:ContentPlaceHolder>
+        </main>
+        
     </form>
+    
+    
 </body>
 </html>

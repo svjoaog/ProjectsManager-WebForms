@@ -1,13 +1,7 @@
 ﻿using ProjectsWcfServiceLibrary.Contracts;
 using ProjectsWcfServiceLibrary.Services;
 using System;
-using System.Collections.Generic;
-using System.EnterpriseServices;
-using System.Linq;
-using System.Web;
 using System.Web.Hosting;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Fundep.Gestao.Projeto.Web.Pages.Projects
 {
