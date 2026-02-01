@@ -8,11 +8,12 @@ namespace Fundep.Gestao.Projeto.Web.Pages.Projects
 {
     public partial class CreateProject : System.Web.UI.Page
     {
+        private readonly string xmlPath = HostingEnvironment.MapPath("~/App_Data/projects.xml");
         protected void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                string xmlPath = HostingEnvironment.MapPath("~/App_Data/projects.xml");
+                
                 IProjectService service = new ProjectServices(xmlPath);
                 var project = new Project
                 {

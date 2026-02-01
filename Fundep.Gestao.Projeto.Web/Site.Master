@@ -40,7 +40,7 @@
                 NavigateUrl="~/Pages/Projects/ListProjects.aspx"
                 Text="Listar Projetos" />
         </nav>
-        <main>
+        <main style="padding: 10px">
             <asp:ContentPlaceHolder runat="server" ID="MainContent">
 
             </asp:ContentPlaceHolder>
