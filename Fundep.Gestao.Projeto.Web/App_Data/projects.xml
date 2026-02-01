@@ -8,10 +8,10 @@
     <Balance>1200</Balance>
   </Project>
   <Project>
-    <ProjectNumber>12</ProjectNumber>
-    <SubProjectNumber>1.2.3.</SubProjectNumber>
+    <ProjectNumber>1</ProjectNumber>
+    <SubProjectNumber>1.2.4.</SubProjectNumber>
     <Name>Web App</Name>
     <Manager>João Vitor</Manager>
-    <Balance>1200</Balance>
+    <Balance>122222</Balance>
   </Project>
 </Projects>
