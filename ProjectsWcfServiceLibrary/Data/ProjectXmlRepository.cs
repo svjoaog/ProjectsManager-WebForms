@@ -1,25 +1,31 @@
-﻿using Fundep.Gestao.Projeto.Web.Domain.Model;
-using Fundep.Gestao.Projeto.Web.Domain.Exceptions;
+﻿using ProjectsWcfServiceLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Fundep.Gestao.Projeto.Web.Services
+namespace ProjectsWcfServiceLibrary.Data
 {
-    public class ProjectServiceXml
+    public class ProjectXmlRepository
     {
-        private string XmlPath => HttpContext.Current.Server.MapPath("../../App_Data/projects.xml");
+        private readonly string _xmlPath;
 
-        public void save(Project project)
+        public ProjectXmlRepository(string xmlPath)
+        {
+            _xmlPath = xmlPath;
+        }
+
+        public void Save(Project project)
         {
             XDocument document;
 
-            if (File.Exists(XmlPath))
+            if (File.Exists(_xmlPath))
             {
-                document = XDocument.Load(XmlPath);
+                document = XDocument.Load(_xmlPath);
             }
             else
             {
@@ -27,36 +33,31 @@ namespace Fundep.Gestao.Projeto.Web.Services
             }
 
             bool exists = document.Root.Elements("Project")
-                .Any(p =>(int)p.Element("ProjectNumber") == project.ProjectNum);
+                .Any(p => (int)p.Element("ProjectNumber") == project.ProjectNum);
 
             if (exists)
             {
-                throw new CustomException("Projeto já existente no banco de dados.");
+                throw new FaultException("Projeto já existente no banco de dados.");
             }
 
-            XElement newProject = new XElement("Project",
+            document.Root.Add(new XElement("Project",
                 new XElement("ProjectNumber", project.ProjectNum),
                 new XElement("SubProjectNumber", project.SubProjectNum),
                 new XElement("Name", project.Name),
                 new XElement("Manager", project.ManagerName),
-                new XElement("Balance", project.ProjectBalance)
-                );
+                new XElement("Balance", project.ProjectBalance)));
 
-            
-
-            document.Root.Add(newProject);
-            document.Save(XmlPath); 
-
+            document.Save(_xmlPath);
         }
 
-        public List<Project> GetAll()
+        public List<Project> ListProjects()
         {
             List<Project> projects = new List<Project>();
 
-            if(!File.Exists(XmlPath))
+            if (!File.Exists(_xmlPath))
                 return projects;
 
-            XDocument document = XDocument.Load(XmlPath);
+            XDocument document = XDocument.Load(_xmlPath);
 
             projects = document.Root
                 .Elements("Project")

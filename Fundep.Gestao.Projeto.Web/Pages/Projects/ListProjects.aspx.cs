@@ -1,9 +1,11 @@
-﻿using Fundep.Gestao.Projeto.Web.Services;
+﻿using ProjectsWcfServiceLibrary.Contracts;
+using ProjectsWcfServiceLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -21,8 +23,9 @@ namespace Fundep.Gestao.Projeto.Web.Pages.Projects
 
         private void LoadProjects()
         {
-            ProjectServiceXml service = new ProjectServiceXml();
-            gvProjects.DataSource = service.GetAll();
+            string xmlPath = HostingEnvironment.MapPath("~/App_Data/projects.xml");
+            IProjectService service = new ProjectServices(xmlPath);
+            gvProjects.DataSource = service.ListProjects();
             gvProjects.DataBind();
         }
     }
